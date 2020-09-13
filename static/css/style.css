@@ -1,0 +1,21 @@
+body {
+    padding-top: 56px;
+}
+a, a:hover, a:visited, a:focus {
+    text-decoration:none;
+}
+.dropdownMenuButton {
+    width: 100px;
+    height: 40px;
+}
+#image-carousel{
+    width: 100%;
+    height: 500px;
+    object-fit: contain;
+}
+#homepage_cards{
+  width: 100%;
+  height: 200px;
+  border:        4px solid #000000;
+  border-radius: 1000px;
+}
