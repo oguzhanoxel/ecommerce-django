@@ -2,6 +2,59 @@
 
 {% load static %}
 
+{% load tags %}
+
 {% block content %}
 <h1>SHOP CART</h1>
+
+<div class="container mb-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col"> </th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col" class="text-right">Price</th>
+                            <th scope="col" class="text-right">SubTotal</th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in shopcart %}
+                            <tr>
+                                <td><img id="shopcart_products_image" src="{{ item.product.image.url }}" /> </td>
+                                <td>{{ item.product.name }}</td>
+                                <td>{{ item.quantity }}</td>
+                                <td class="text-right">{{ item.product.price }} TL</td>
+                                <td class="text-right">{{ subtotal|index:forloop.counter0 }} TL</td>
+                                <td class="text-right"><a href="/deletefromcart/{{ item.id }}" class="btn btn-danger">Delete</a></td>
+                            </tr>
+                        {% endfor %}
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="text-right"><strong>Total:</strong></td>
+                            <td class="text-right"><strong>{{ total }} TL</strong></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col mb-2">
+            <div class="row">
+                <div class="col-sm-12  col-md-6">
+                    <button class="btn btn-block btn-light">Continue Shopping</button>
+                </div>
+                <div class="col-sm-12 col-md-6 text-right">
+                    <button class="btn btn-lg btn-block btn-success text-uppercase">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}

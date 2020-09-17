@@ -3,7 +3,8 @@ from django import forms
 
 from products.models import Product
 from categories.models import Category
-
+from shopcart.models import ShopCart
+from orders.models import Order, OrderDetail
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
@@ -25,3 +26,6 @@ class CategoryAdmin(admin.ModelAdmin):
 
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(ShopCart)
+admin.site.register(Order)
+admin.site.register(OrderDetail)

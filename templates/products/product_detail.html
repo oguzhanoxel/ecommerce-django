@@ -25,6 +25,11 @@
         <h3 class="card-title">{{ product.name }}</h3></a>
         <h4>{{ product.price }} TL</h4>
         <p class="card-text">{{ product.description }}</p>
+        <form action="/addtocart/{{ product.id }}" method="POST">
+          {% csrf_token %}
+          <input type="number" id="{{ form.as_p }}" name="quantity" min="1">
+          <input class="primary-btn pd-to-cart" type="submit" value="Add to Cart">
+        </form>
         <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
         4.0 stars
       </div>
