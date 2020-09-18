@@ -2,6 +2,77 @@
 
 {% load static %}
 
+{% load tags %}
+
 {% block content %}
 <h1>ORDER PRODUCT</h1>
+
+<div class="col-lg-12">
+    <div class="row">
+        <div class="col-md-4 order-md-2 mb-4">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-muted">Your cart</span>
+            <span class="badge badge-secondary badge-pill">{{ numItems }}</span>
+        </h4>
+        <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <h6 class="my-0">Product name</h6>
+                <h6 class="my-0">Price</h6>
+                <h6 class="my-0">SubTotal</h6>
+            </li>
+            {% for item in shopcart %}
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                    <h6 class="my-0">{{ item.product.name }}
+                        <span class="badge badge-primary badge-pill"> x {{ item.quantity }}</span>
+                    </h6>
+                    <small class="text-muted">{{ item.product.description }}</small>
+                </div>
+                <span class="text-muted">{{ item.product.price }} TL</span>
+                <span class="text-muted">{{ subtotal|index:forloop.counter0 }} TL</span>
+                </li>
+            {% endfor %}
+            <li class="list-group-item d-flex justify-content-between">
+            <span><strong>Total:</strong></span>
+            <strong>{{ total }} TL</strong>
+            </li>
+        </ul>
+        </div>
+        <div class="col-md-8 order-md-1">
+        <h4 class="mb-3">Billing address</h4>
+        <form name="order" method="post" >
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="first_name">First Name <span>*</span></label>
+                    {{form.first_name}}
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="last_name">Last Name <span>*</span></label>
+                    {{form.last_name}}
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="phone">Phone <span>*</span></label>
+                {{form.phone}}
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="email">E-mail <span>*</span></label>
+                {{form.email}}
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="city">City <span>*</span></label>
+                {{form.city}}
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="address">Address <span>*</span></label>
+                {{form.address}}
+            </div>
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Place Order</button>
+        </form>
+        </div>
+    </div>
+</div>
+
 {% endblock content %}

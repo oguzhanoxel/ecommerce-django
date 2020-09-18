@@ -12,24 +12,24 @@
 
   <!-- Custom styles for this template -->
   <link href="{% static 'css/style.css' %}" rel="stylesheet">
-  <link href="{% static 'css/input_number.css' %}" rel="stylesheet">
 
 </head>
 
 <body>
 
     {% include 'navbar.html' %}
-
+    <div id="wrap">
+    <div id="main" class="container clear-top">
     <div class="container">
-
-      <div class="row">
+    <div class="row">
 
         {% block content %}
 
         {% endblock content %}
 
-      </div>
-
+    </div>
+    </div>
+    </div>
     </div>
 
     {% include 'footer.html' %}

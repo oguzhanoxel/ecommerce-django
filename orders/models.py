@@ -21,6 +21,7 @@ class Order(models.Model):
     last_name = models.CharField(max_length=60)
     address = models.CharField(max_length=150)
     city = models.CharField(max_length=20)
+    email = models.EmailField()
     phone = models.CharField(max_length=20)
     total = models.FloatField()
     status = models.CharField(
