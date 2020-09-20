@@ -12,7 +12,7 @@ def signup(request):
                 password=form.cleaned_data['password1']
             )
             login(request, new_user)
-            return redirect('home')
+            return redirect('home_page')
     else:
         form = UserCreateForm()
     return render(request, 'registration/signup.html', {'form': form})

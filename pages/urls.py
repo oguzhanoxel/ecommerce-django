@@ -9,6 +9,11 @@ urlpatterns = [
     #Products
     path('products/<int:category_id>', views.category_view, name="category"),
     path('products/detail/<int:product_id>', views.product_detail_view, name="product_detail"),
+    #Comments
+    path('comments/', views.comment_list_view, name="comment_list"),
+    path('products/detail/<int:id>/comment', views.add_comment_to_product, name="add_comment_to_post"),
+    path('products/detail/<int:id>/comment/approve/', views.comment_approve, name="comment_approve"),
+    path('products/detail/<int:id>/comment/remove/', views.comment_remove, name="comment_remove"),
     #Accounts
     path('signup/', accounts_views.signup, name='signup'),
     #Orders

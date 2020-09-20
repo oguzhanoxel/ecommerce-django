@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Comment List</h1>
+<div class="col-lg-12">
+  <div class="card">
+    <div class="card-header">
+      Product Reviews
+    </div>
+    <div class="card-body">
+      {% for comment in comments %}
+      <h5 class="card-title">
+        <a href="{% url 'product_detail' product_id=comment.product.pk %}">{{ comment.product.name }}</a>
+      </h5>
+      <p class="card-text">{{ comment.text|linebreaks }}</p>
+      <a class="btn btn-danger" href="{% url 'comment_remove' id=comment.pk %}">Remove</a>
+      <hr>
+      {% empty %}
+      <p>No comments here yet :(</p>
+      <hr>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+  <!-- /.card -->
+  
+{% endblock %}

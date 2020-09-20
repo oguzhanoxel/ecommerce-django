@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django import forms
 
-from products.models import Product
+from products.models import Product, Comment
 from categories.models import Category
 from shopcart.models import ShopCart
 from orders.models import Order, OrderDetail
@@ -24,8 +24,9 @@ class CategoryAdmin(admin.ModelAdmin):
         'is_active',
     )
 
-admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(Product, ProductAdmin)
+admin.site.register(Comment)
 admin.site.register(ShopCart)
 admin.site.register(Order)
 admin.site.register(OrderDetail)
