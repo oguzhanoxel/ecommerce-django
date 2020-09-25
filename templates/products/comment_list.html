@@ -10,7 +10,7 @@
     <div class="card-body">
       {% for comment in comments %}
       <h5 class="card-title">
-        <a href="{% url 'product_detail' product_id=comment.product.pk %}">{{ comment.product.name }}</a>
+        <a href="{% url 'product_detail' slug=comment.product.slug %}">{{ comment.product.name }}</a>
       </h5>
       <p class="card-text">{{ comment.text|linebreaks }}</p>
       <a class="btn btn-danger" href="{% url 'comment_remove' id=comment.pk %}">Remove</a>

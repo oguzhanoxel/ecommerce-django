@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django import forms
 
-from products.models import Product, Comment
+from products.models import Product, Comment, Images
 from categories.models import Category
 from shopcart.models import ShopCart
 from orders.models import Order, OrderDetail
@@ -30,3 +30,4 @@ admin.site.register(Comment)
 admin.site.register(ShopCart)
 admin.site.register(Order)
 admin.site.register(OrderDetail)
+admin.site.register(Images)

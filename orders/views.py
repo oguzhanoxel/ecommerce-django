@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.contrib import messages
 from shopcart.models import ShopCart
 from orders.models import Order
 from orders.models import OrderDetail
@@ -55,6 +56,7 @@ def orderproduct(request):
                 detail.total = item.amount
                 detail.save()
             ShopCart.objects.filter(user_id=current_user.id).delete()
+            messages.success(request, "Thanks for purchases")
             return HttpResponseRedirect(reverse("orderproduct", args=None))
     context = {
         'total': total,

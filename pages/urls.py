@@ -6,9 +6,13 @@ from shopcart import views as shopcart_views
 
 urlpatterns = [
     path('', views.home_page_view, name="home_page"),
+    path('about-us/', views.about_view, name="about_page"),
+    path('contact/', views.contact_view, name="contact_page"),
     #Products
-    path('products/<int:category_id>', views.category_view, name="category"),
-    path('products/detail/<int:product_id>', views.product_detail_view, name="product_detail"),
+    path('products/<slug:slug>', views.category_view, name="category"),
+    path('products/<slug:slug>/detail', views.product_detail_view, name="product_detail"),
+    #Search
+    path('search/', views.product_search_view, name="product_search"),
     #Comments
     path('comments/', views.comment_list_view, name="comment_list"),
     path('products/detail/<int:id>/comment', views.add_comment_to_product, name="add_comment_to_post"),

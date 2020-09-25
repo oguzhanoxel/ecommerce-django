@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="col-lg-3">
+
+    <h1 class="my-4">Shop Name</h1>
+    <div class="list-group">
+        {% for category in categories %}
+            <a href="{% url 'category' slug=category.slug %}" class="list-group-item">{{ category.category_name }}</a>
+        {% endfor %}
+    </div>
+
+</div>
+<!-- /.col-lg-3 -->
+
+<!-- Page Content -->
+<div class="col-lg-9">
+
+    <div class="row">
+        {% for product in products %}
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                <a href="#"><img class="card-img-top" src="{{ product.image.url }}" alt=""></a>
+                <div class="card-body">
+                <h4 class="card-title">
+                    <a href="{% url 'product_detail' slug=product.slug %}">{{ product.name }}</a>
+                </h4>
+                <h5>{{ product.price }} TL</h5>
+                <p class="card-text">{{ product.description }}</p>
+                </div>
+                <div class="card-footer">
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- /.row -->
+
+</div>
+<!-- /.col-lg-9 -->
+
+{% endblock content %}

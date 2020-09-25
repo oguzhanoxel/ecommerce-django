@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="aboutus-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="aboutus">
+                    <h2 class="aboutus-title">About Us</h2>
+                    <p class="aboutus-text">Pellentesque feugiat ac felis id vehicula. In eleifend tempus velit non elementum. Etiam efficitur enim quis semper finibus. Donec dictum pharetra nisi, a malesuada arcu posuere ut. Nullam aliquam nisi pharetra, congue dui in, pretium tellus. Aliquam erat volutpat. Mauris eget ex enim. Donec posuere urna non lacus viverra scelerisque. Etiam ullamcorper non urna eu rutrum.</p>
+                    <p class="aboutus-text">Nulla facilisi. Donec pretium mauris lacus, quis maximus diam semper feugiat. Integer pharetra elit sed varius finibus. Praesent malesuada aliquet felis. Etiam mollis tincidunt fermentum. In hac habitasse platea dictumst. Sed pulvinar lacus a suscipit varius. Ut eget bibendum justo. Maecenas ultricies ullamcorper arcu id rutrum. Maecenas quis metus lorem. Morbi elementum mattis volutpat. Curabitur vestibulum eleifend quam nec tristique. Nullam nec convallis nunc. Proin auctor urna est, in tincidunt nulla gravida sit amet.</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="aboutus-banner">
+                    <img src="{% static 'img/about.jpg' %}" alt="">
+                </div>
+            </div>
+            <div class="col-md-5 col-sm-6 col-xs-12">
+                <div class="feature">
+                    <div class="feature-box">
+                        <div class="clearfix">
+                            <div class="feature-content">
+                                <h4>Convallis congue gravida</h4>
+                                <p>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feature-box">
+                        <div class="clearfix">
+      
+                            <div class="feature-content">
+                                <h4>Tempus sit amet</h4>
+                                <p>Donec vitae sapien ut libero venenatis faucibu. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feature-box">
+                        <div class="clearfix">
+                    
+                            <div class="feature-content">
+                                <h4>Semper lectus</h4>
+                                <p>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

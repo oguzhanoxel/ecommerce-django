@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 
     #third party apps
     'django_cleanup.apps.CleanupConfig',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -138,3 +139,5 @@ MEDIA_ROOT = BASE_DIR / 'media/'
 
 LOGIN_REDIRECT_URL = 'home_page'
 LOGOUT_REDIRECT_URL = 'home_page'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

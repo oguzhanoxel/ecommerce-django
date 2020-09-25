@@ -6,10 +6,10 @@
 
 <div class="col-lg-3">
 
-    <h1 class="my-4">Shop Name</h1>
+    <h1 class="my-4">Categories</h1>
     <div class="list-group">
         {% for category in categories %}
-            <a href="{% url 'category' category_id=category.id %}" class="list-group-item">{{ category.category_name }}</a>
+            <a href="{% url 'category' slug=category.slug %}" class="list-group-item">{{ category.category_name }}</a>
         {% endfor %}
     </div>
 
@@ -31,11 +31,11 @@
         <div class="carousel-inner" role="listbox">
             {% for i in products %}
                 {% if forloop.first %}
-                    <div class="carousel-item active">
+                    <div id="carousel-item-category" class="carousel-item active">
                         <img id="image-carousel" class="d-block img-fluid" src="{{ i.image.url }}">
                     </div>
                 {% else %}
-                    <div class="carousel-item">
+                    <div id="carousel-item-category" class="carousel-item">
                         <img id="image-carousel" class="d-block img-fluid" src="{{ i.image.url }}">
                     </div>
                 {% endif %}
@@ -55,22 +55,52 @@
         {% for product in products %}
         <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="{{ product.image.url }}" alt=""></a>
+                <a href="{% url 'product_detail' slug=product.slug %}"><img class="card-img-top" src="{{ product.image.url }}" alt=""></a>
                 <div class="card-body">
                 <h4 class="card-title">
-                    <a href="{% url 'product_detail' product_id=product.pk %}">{{ product.name }}</a>
+                    <a href="{% url 'product_detail' slug=product.slug %}">{{ product.name }}</a>
                 </h4>
+                <hr>
                 <h5>{{ product.price }} TL</h5>
-                <p class="card-text">{{ product.description }}</p>
+                <hr>
+                <p class="card-text">{{ product.description|truncatechars_html:100 }}</p>
                 </div>
-                <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                <div class="card-footer text-right">
+                    <a class="btn btn-success" href="{% url 'addtocart' id=product.pk %}">Add to Cart</a>
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
     <!-- /.row -->
+
+    <!--Pagination-->
+    <div class="container">
+        {% if products.has_other_pages %}
+            <ul class="pagination justify-content-center">
+                <!--Previous-->
+                {% if products.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?page={{ products.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Previous</a></li>
+                {% else %}
+                    <li id="disable-item-previous" class="page-item disable"><a class="page-link">Previous</a></li>
+                {% endif %}
+                <!--Pages-->
+                {% for i in products.paginator.page_range %}
+                    {% if products.number == i %}
+                        <li id="active-item" class="page-item active"><a class="page-link">{{ i }} </a></li>
+                    {% else %}
+                        <li class="page-item"><a class="page-link" href="?page={{ i }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">{{ i }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                <!--Next-->
+                {% if products.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{ products.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Next</a></li>
+                {% else %}
+                    <li id="disable-item-next" class="page-item disable"><a class="page-link">Next</a></li>
+                {% endif %}
+            </ul>
+        {% endif %}
+    </div>
 
     </div>
     <!-- /.col-lg-9 -->

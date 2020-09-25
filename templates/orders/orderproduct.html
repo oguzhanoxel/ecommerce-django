@@ -4,6 +4,8 @@
 
 {% load tags %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
 <h1>ORDER PRODUCT</h1>
 
@@ -26,7 +28,7 @@
                     <h6 class="my-0">{{ item.product.name }}
                         <span class="badge badge-primary badge-pill"> x {{ item.quantity }}</span>
                     </h6>
-                    <small class="text-muted">{{ item.product.description }}</small>
+                    <small class="text-muted">{{ item.product.description|truncatechars_html:25 }}</small>
                 </div>
                 <span class="text-muted">{{ item.product.price }} TL</span>
                 <span class="text-muted">{{ subtotal|index:forloop.counter0 }} TL</span>
@@ -44,29 +46,23 @@
             {% csrf_token %}
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label for="first_name">First Name <span>*</span></label>
-                    {{form.first_name}}
+                    {{form.first_name|as_crispy_field }}
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="last_name">Last Name <span>*</span></label>
-                    {{form.last_name}}
+                    {{form.last_name|as_crispy_field }}
                 </div>
             </div>
             <div class="col-md-6 mb-3">
-                <label for="phone">Phone <span>*</span></label>
-                {{form.phone}}
+                {{form.phone|as_crispy_field }}
             </div>
             <div class="col-md-6 mb-3">
-                <label for="email">E-mail <span>*</span></label>
-                {{form.email}}
+                {{form.email|as_crispy_field }}
             </div>
             <div class="col-md-6 mb-3">
-                <label for="city">City <span>*</span></label>
-                {{form.city}}
+                {{form.city|as_crispy_field }}
             </div>
             <div class="col-md-6 mb-3">
-                <label for="address">Address <span>*</span></label>
-                {{form.address}}
+                {{form.address|as_crispy_field }}
             </div>
             <hr class="mb-4">
             <button class="btn btn-primary btn-lg btn-block" type="submit">Place Order</button>

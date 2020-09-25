@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
 
 <!-- add comment-->
@@ -9,7 +11,7 @@
             <h1>New comment</h1>
             <form method="POST" class="post-form">
                 {% csrf_token %}
-                {{ form.as_p }}
+                {{ form|crispy }}
                 <hr>
                 <button type="submit" class="save btn btn-success">Send</button>
             </form>

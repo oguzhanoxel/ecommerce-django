@@ -13,6 +13,8 @@
   <!-- Custom styles for this template -->
   <link href="{% static 'css/style.css' %}" rel="stylesheet">
   <link href="{% static 'css/navbar.css' %}" rel="stylesheet">
+  <link href="{% static 'css/about.css' %}" rel="stylesheet">
+  <link href="{% static 'css/contact.css' %}" rel="stylesheet">
   <link href="{% static 'css/all.css' %}" rel="stylesheet">
 
 </head>
@@ -20,23 +22,27 @@
 <body>
 
     {% include 'navbar.html' %}
+    {% include 'messages.html' %}
     <div id="wrap">
     <div id="main" class="container clear-top">
-    <div class="container">
+    <div class="container h-100 justify-content-center">
+    <div class="jumbotron my-auto">
     <div class="row">
 
-        {% block content %}
+    {% block content %}
 
-        {% endblock content %}
-
+    {% endblock content %}
+        
     </div>
     </div>
     </div>
     </div>
-
+    </div>
+    
     {% include 'footer.html' %}
 
     <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'js/carousel.js' %}"></script>
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
